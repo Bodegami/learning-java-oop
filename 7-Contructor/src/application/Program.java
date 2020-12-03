@@ -15,14 +15,17 @@ public class Program {
 		
 		System.out.println("Enter product data: ");
 		System.out.println("Name: ");
-		String name2 = sc.nextLine();
+		String name = sc.nextLine();
 		
 		System.out.println("Price: ");
-		double price2 = sc.nextDouble();
+		double price = sc.nextDouble();
 		
+		Product product = new Product(name, price);
 		
-		
-		Product product = new Product(name2, price2);
+		product.setName("Computer");
+		System.out.println("Updated name: " + product.getName());
+		product.setPrice(1200.0);
+		System.out.println("Updated price: " + product.getPrice());
 		
 		
 		System.out.println();
@@ -30,16 +33,16 @@ public class Program {
 		
 		System.out.println();
 		System.out.println("Enter the number of products to be added in stock: ");
-		int quantity2 = sc.nextInt();
-		product.AddProducts(quantity2);
+		int quantity = sc.nextInt();
+		product.AddProducts(quantity);
 		
 		System.out.println();
 		System.out.println("Updated data: " + product);
 		
 		System.out.println();
 		System.out.println("Enter the number of products to be removed from stock: ");
-		quantity2 = sc.nextInt();
-		product.RemoveProducts(quantity2);
+		quantity = sc.nextInt();
+		product.RemoveProducts(quantity);
 		
 		System.out.println();
 		System.out.println("Updated data: " + product);
