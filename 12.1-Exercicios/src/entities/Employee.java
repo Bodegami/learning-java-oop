@@ -43,6 +43,14 @@ public class Employee {
 		this.salary = salary;
 	}
 	
+	public String toString() {
+		return id
+				+ ", "
+				+ name
+				+ ", "
+				+ String.format("%.2f", salary);
+	}
+	
 	
 	
 }
