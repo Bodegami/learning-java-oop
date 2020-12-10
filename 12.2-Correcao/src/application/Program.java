@@ -25,14 +25,6 @@ public class Program {
 			System.out.println("Employee #" + (i + 1) + ":");
 			System.out.println("Id: ");
 			Integer id = sc.nextInt();
-			
-			while(hasId(list, id)) {
-				System.out.println("Id already taken! Try again: ");
-				id = sc.nextInt();
-			}
-			
-			
-			
 			System.out.println("Name: ");
 			sc.nextLine();
 			String name = sc.nextLine();
@@ -44,32 +36,34 @@ public class Program {
 			list.add(emp);		
 		}
 		
-		System.out.println("Enter the employee id that will have salary increase:");
-		int id = sc.nextInt();
-		
-		Employee emp = list.stream().filter(x -> x.getId()  == id).findFirst().orElse(null);
-		if (emp == null) {
+		System.out.println();
+		System.out.print("Enter the employee id that will have salary increase:");
+		int idSalary = sc.nextInt();
+		Integer pos = position(list, idSalary);
+		if (pos == null) {
 			System.out.println("This id does not exist!");
 		} else {
-			System.out.println("Enter the percentage:");
+			System.out.print("Enter the percentage: ");
 			double percent = sc.nextDouble();
-			emp.increaseSalary(percent);
+			list.get(pos).increaseSalary(percent);
 		}
 		
 		System.out.println();
-		System.out.println("List of employess:");
-		//System.out.println(list.toString());
-		for (Employee e : list ) {
-			System.out.println(e);
+		System.out.println("List of Employess: ");
+		for (Employee emp : list) {
+			System.out.println(emp);
 		}
-		
+			
 		sc.close();
 	}
 	
-	//Funcao auxiliar para verificar se o id ja existe
-	public static boolean hasId(List <Employee> list, int id) {
-		Employee emp = list.stream().filter(x -> x.getId() == id).findFirst().orElse(null);
-		return emp != null;
+	public static Integer position(List<Employee> list, int id ) {
+		for (int i = 0; i < list.size(); i++) {
+			if(list.get(i).getId() == id) {
+				return i;
+			}
+		}
+		return null;
 	}
 
 }
